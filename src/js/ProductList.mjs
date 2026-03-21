@@ -1,10 +1,9 @@
 import { renderListWithTemplate } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
 
 function productCardTemplate(product) {
   return `<li class="product-card">
-    <a href="product_pages/?product=${product.Id}">
-      <img src="${product.Image}" alt="${product.Name}">
+    <a href="/product_pages/?product=${product.Id}">
+      <img src="${product.Images.PrimaryMedium}" alt="${product.Name}">
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
       <p class="product-card__price">$${product.FinalPrice}</p>
@@ -13,18 +12,29 @@ function productCardTemplate(product) {
 }
 
 export default class ProductList {
-  constructor(category, listElement) {
+  constructor(category, dataSource, listElement) {
     this.category = category;
+    this.dataSource = dataSource;
     this.listElement = listElement;
-    this.dataSource = new ProductData(category);
   }
 
   async init() {
-    const products = await this.dataSource.getData();
-    this.renderList(products);
+    const list = await this.dataSource.getData(this.category);
+    this.renderList(list);
+    this.updateTitle();
   }
 
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
+  }
+
+  updateTitle() {
+    const titleElement = document.querySelector(".title");
+    if (titleElement && this.category) {
+      const categoryName = this.category
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase());
+      titleElement.textContent = `Top Products: ${categoryName}`;
+    }
   }
 }
