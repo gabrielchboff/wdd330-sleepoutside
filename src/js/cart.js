@@ -11,13 +11,18 @@ function renderCartContents() {
   }
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+
+  const subtotal = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+  document.querySelector(".cart-footer__subtotal").innerText =
+    `$${subtotal.toFixed(2)}`;
 }
 
 function cartItemTemplate(item) {
+  const imgSrc = item.Images?.PrimaryMedium || item.Image;
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${imgSrc}"
       alt="${item.Name}"
     />
   </a>
