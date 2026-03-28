@@ -1,6 +1,14 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
 async function convertToJson(res) {
+  const contentType = res.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    const text = await res.text();
+    throw {
+      name: "servicesError",
+      message: `Expected JSON but received: ${text.substring(0, 100)}... Check that VITE_SERVER_URL is set correctly. Current base URL: ${baseURL}`,
+    };
+  }
   const jsonResponse = await res.json();
   if (res.ok) {
     return jsonResponse;

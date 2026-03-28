@@ -19,9 +19,13 @@ export default class ProductList {
   }
 
   async init() {
-    const list = await this.dataSource.getData(this.category);
-    this.renderList(list);
-    this.updateTitle();
+    try {
+      const list = await this.dataSource.getData(this.category);
+      this.renderList(list);
+      this.updateTitle();
+    } catch (error) {
+      this.listElement.innerHTML = `<li class="product-card error">Unable to load products: ${error.message}</li>`;
+    }
   }
 
   renderList(list) {
