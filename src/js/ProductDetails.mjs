@@ -24,13 +24,14 @@ export default class ProductDetails {
 
   renderProductDetails() {
     const container = document.querySelector(".product-detail");
+    const imgSrc = this.product.Images?.PrimaryLarge || this.product.Image;
 
     container.innerHTML = `
       <h3>${this.product.Brand.Name}</h3>
       <h2 class="divider">${this.product.NameWithoutBrand}</h2>
       <img
         class="divider"
-        src="${this.product.Images.PrimaryLarge}"
+        src="${imgSrc}"
         alt="${this.product.Name}"
       />
       <p class="product-card__price">$${this.product.FinalPrice}</p>
