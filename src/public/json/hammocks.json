@@ -1,0 +1,67 @@
+{
+  "Result": [
+    {
+      "Id": "H001",
+      "NameWithoutBrand": "Ultralight Hammock",
+      "Name": "Eagle's Nest Ultralight Hammock",
+      "Images": {
+        "PrimaryMedium": "https://placehold.co/320x320?text=Hammock",
+        "PrimaryLarge": "https://placehold.co/500x500?text=Hammock"
+      },
+      "Colors": [
+        {
+          "ColorCode": "01",
+          "ColorName": "Forest Green"
+        }
+      ],
+      "DescriptionHtmlSimple": "A lightweight and compact hammock perfect for camping and outdoor relaxation.",
+      "Brand": {
+        "Id": "5001",
+        "Name": "Eagle's Nest"
+      },
+      "FinalPrice": 79.99
+    },
+    {
+      "Id": "H002",
+      "NameWithoutBrand": "Double Hammock",
+      "Name": "Alpine Double Hammock",
+      "Images": {
+        "PrimaryMedium": "https://placehold.co/320x320?text=Hammock",
+        "PrimaryLarge": "https://placehold.co/500x500?text=Hammock"
+      },
+      "Colors": [
+        {
+          "ColorCode": "01",
+          "ColorName": "Ocean Blue"
+        }
+      ],
+      "DescriptionHtmlSimple": "A spacious double hammock with durable construction for comfortable outdoor lounging.",
+      "Brand": {
+        "Id": "5002",
+        "Name": "Alpine Gear"
+      },
+      "FinalPrice": 99.99
+    },
+    {
+      "Id": "H003",
+      "NameWithoutBrand": "Mosquito Net Hammock",
+      "Name": "TrailBlazer Mosquito Net Hammock",
+      "Images": {
+        "PrimaryMedium": "https://placehold.co/320x320?text=Hammock",
+        "PrimaryLarge": "https://placehold.co/500x500?text=Hammock"
+      },
+      "Colors": [
+        {
+          "ColorCode": "01",
+          "ColorName": "Charcoal"
+        }
+      ],
+      "DescriptionHtmlSimple": "Stay protected from bugs while enjoying the outdoors with this hammock featuring an integrated mosquito net.",
+      "Brand": {
+        "Id": "5003",
+        "Name": "TrailBlazer"
+      },
+      "FinalPrice": 119.99
+    }
+  ]
+}

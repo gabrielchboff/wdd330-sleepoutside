@@ -33,6 +33,7 @@ export default class ProductDetails {
         class="divider"
         src="${imgSrc}"
         alt="${this.product.Name}"
+        onerror="this.src='https://placehold.co/500x500?text=No+Image'"
       />
       <p class="product-card__price">$${this.product.FinalPrice}</p>
       <p class="product__color">${this.product.Colors[0].ColorName}</p>

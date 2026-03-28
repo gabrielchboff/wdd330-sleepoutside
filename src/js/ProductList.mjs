@@ -4,7 +4,7 @@ function productCardTemplate(product) {
   const imgSrc = product.Images?.PrimaryMedium || product.Image;
   return `<li class="product-card">
     <a href="/product_pages/?product=${product.Id}">
-      <img src="${imgSrc}" alt="${product.Name}">
+      <img src="${imgSrc}" alt="${product.Name}" onerror="this.src='https://placehold.co/320x320?text=No+Image'">
       <h3 class="card__brand">${product.Brand.Name}</h3>
       <h2 class="card__name">${product.NameWithoutBrand}</h2>
       <p class="product-card__price">$${product.FinalPrice}</p>
