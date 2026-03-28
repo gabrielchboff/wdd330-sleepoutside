@@ -1,3 +1,5 @@
+const baseURL = import.meta.env.VITE_SERVER_URL;
+
 async function convertToJson(res) {
   const jsonResponse = await res.json();
   if (res.ok) {
@@ -9,22 +11,22 @@ async function convertToJson(res) {
 
 export default class ExternalServices {
   async getData(category) {
-    const response = await fetch(`/json/${category}.json`);
+    const response = await fetch(`${baseURL}products/search/${category}`);
     const data = await convertToJson(response);
-    return Array.isArray(data) ? data : data.Result || [];
+    return data.Result;
   }
   async findProductById(id) {
-    const categories = ["tents", "backpacks", "sleeping-bags"];
-    for (const cat of categories) {
-      const products = await this.getData(cat);
-      const found = products.find(
-        (p) => p.Id.toLowerCase() === id.toLowerCase(),
-      );
-      if (found) return found;
-    }
-    return null;
+    const response = await fetch(`${baseURL}product/${id}`);
+    const data = await convertToJson(response);
+    return data.Result;
   }
   async checkout(payload) {
-    return { orderId: Date.now(), ...payload };
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    };
+    const response = await fetch(`${baseURL}checkout`, options);
+    return await convertToJson(response);
   }
 }
